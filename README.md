@@ -4,43 +4,34 @@ A Python implementation of a **Soft-Margin Support Vector Machine (SVM)** from s
 
 ## Overview
 
-This project implements a binary Support Vector Machine classifier without relying on a pre-built SVM classifier. The model learns a separating hyperplane for linearly separable and overlapping data while allowing classification errors through the soft-margin parameter.
+This project implements a binary Soft-Margin SVM classifier without relying on a pre-built SVM implementation. The model learns a separating hyperplane while allowing some classification errors through the soft-margin formulation.
 
 ## Features
 
-- Soft-margin SVM implementation
+- Soft-Margin SVM implementation from scratch
 - Lagrange multiplier optimization
-- Identification of support vectors
-- Computation of the weight vector and bias
-- Binary classification using the sign of the decision function
-- Synthetic data generation for model evaluation
+- Support vector identification
+- Weight vector and bias computation
+- Binary classification using a decision function
+- Synthetic data generation
 - Visualization of the learned decision boundary
 
 ## Methodology
 
-The implementation follows the standard soft-margin SVM formulation:
+The implementation follows the standard Soft-Margin SVM formulation:
 
 1. Generate and normalize synthetic training data.
 2. Formulate the SVM optimization problem.
-3. Solve for the Lagrange multipliers.
-4. Identify support vectors from non-zero multipliers.
+3. Solve for the Lagrange multipliers using quadratic optimization.
+4. Identify support vectors from the optimized multipliers.
 5. Compute the weight vector and bias.
-6. Project data points onto the learned hyperplane.
-7. Classify samples using the sign of the decision function.
+6. Construct the decision function.
+7. Classify samples based on the sign of the decision function.
+8. Visualize the resulting decision boundary.
 
-## Main Components
+## Mathematical Formulation
 
-### Lagrange Multipliers
-
-The optimization problem is solved to obtain the Lagrange multipliers associated with the training samples.
-
-### Support Vectors
-
-Samples with non-zero Lagrange multipliers are identified as support vectors. These points determine the position of the decision boundary.
-
-### Decision Function
-
-The model computes:
+The decision function is defined as:
 
 ```text
 f(x) = w · x + b
